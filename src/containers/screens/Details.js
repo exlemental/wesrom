@@ -1,26 +1,13 @@
 import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  ActivityIndicator,
-  TouchableHighlight,
-  StyleSheet,
-  Button,
-  Image,
-} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import apiCall from '../stores/actions/ApiActionCreator';
+import {View, Text, FlatList, StyleSheet, Button, Image} from 'react-native';
 import _ from 'lodash';
 
 const DetailsScreen = ({route, navigation}) => {
   const {dict, currentMechanic} = route.params;
 
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{fontSize: 16}}>
-        Cards contains mechanic {currentMechanic}
-      </Text>
+    <View style={styles.continer}>
+      <Text style={styles.text}>Cards contains mechanic {currentMechanic}</Text>
       <FlatList
         numColumns={2}
         data={dict[currentMechanic]}
@@ -58,4 +45,10 @@ const styles = StyleSheet.create({
     width: 193,
     height: 250,
   },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  text: {fontSize: 16},
 });

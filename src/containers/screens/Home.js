@@ -28,7 +28,7 @@ const HomeScreen = ({navigation}) => {
   const ListViewItemSeparator = () => {
     return (
       //List Item separator View
-      <View style={{height: 0.5, width: '100%', backgroundColor: '#606070'}} />
+      <View style={styles.seperator} />
     );
   };
 
@@ -42,11 +42,11 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'white', justifyContent: 'center'}}>
+    <View style={styles.outerContainer}>
       {loading ? (
         <ActivityIndicator size="large" color="red" />
       ) : (
-        <View style={{flex: 1, paddingTop: 5}}>
+        <View style={styles.innerContainer}>
           <FlatList
             data={mechanics}
             ItemSeparatorComponent={ListViewItemSeparator}
@@ -54,7 +54,6 @@ const HomeScreen = ({navigation}) => {
             renderItem={({item}) => (
               <TouchableHighlight
                 onPress={() => {
-                  debugger;
                   navigation.navigate('Details', {
                     dict: dict,
                     currentMechanic: item,
@@ -86,5 +85,19 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 18,
     padding: 7,
+  },
+  seperator: {
+    height: 0.5,
+    width: '100%',
+    backgroundColor: '#606070',
+  },
+  outerContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+  },
+  innerContainer: {
+    flex: 1,
+    paddingTop: 5,
   },
 });
